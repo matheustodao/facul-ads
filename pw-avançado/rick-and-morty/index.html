@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PW</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-800 text-white py-14 min-h-screen flex flex-col items-center justify-center">
+  <h1 class="text-3xl font-bold mb-10">Personagem Rick e Morty</h1>
+
+  <script>
+    function templateCard({ imgURL, name, id }) {
+      const layout = `
+      <div class=" flex items-center gap-5 w-full">
+    <div class="max-w-[150px] max-h-[150px] h-full w-full">
+      <img src="${imgURL}" alt="imagem" class="min-w-[150px] min-h-[150px] rounded-full">
+    </div>
+    <div>
+      <h2 class="text-3xl font-semibold text-sans">
+        ${name}
+      </h2>
+    </div>
+    </div>`;
+      const element = document.createElement('div')
+      element.setAttribute('class', 'bg-gradient-to-r from-indigo-500/10 to-blue-500/10 rounded p-5 max-w-md w-full')
+      element.dataset.characterId = id;
+      element.innerHTML = layout;
+
+      return element;
+    }
+
+    (async () => {
+      const { results: characters } = await (await fetch('https://rickandmortyapi.com/api/character')).json();
+      const listCharactersElement = document.createElement('div');
+      listCharactersElement.setAttribute('class', 'flex flex-col items-center gap-[24px]')
+
+      characters.forEach((character) => {
+        console.log({ character })
+        const contentCharacterCard = templateCard({ name: character.name, imgURL: character.image, id: character.id })
+        listCharactersElement.appendChild(contentCharacterCard);
+      });
+
+      document.body.appendChild(listCharactersElement)
+      console.log(results)
+    })()
+
+  </script>
+</body>
+
+</html>
