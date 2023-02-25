@@ -26,10 +26,10 @@
 
   <script>
     function useState(initialValue) {
-      let stateValue = initialValue;
+      const stateValue = initialValue;
 
       function dispatcher(newValues) {
-        updatedValue = newValues;
+        const updatedValue = newValues;
 
         if (typeof newValues === 'function') {
           updatedValue = newValues(stateValue);
