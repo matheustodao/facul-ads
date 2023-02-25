@@ -10,8 +10,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-800 text-white py-14 min-h-screen flex flex-col items-center justify-center">
-  <h1 class="text-3xl font-bold mb-10">Personagem Rick e Morty</h1>
+<body class="bg-gray-800 text-white py-14 min-h-screen flex flex-col items-center justify-center max-sm:mx-4">
+  <h1 class="text-3xl font-bold mb-10">Personagens de Rick e Morty</h1>
   <div id="list-container-character" class="flex flex-col items-center gap-[12px]">
     <ul id="list-container-character-observing" class="flex flex-col items-center gap-[24px]"></ul>
 
@@ -47,17 +47,22 @@
       const [infoEndpoint, setInfoEndpoint] = useState({})
       const listCharactersElement = document.querySelector('#list-container-character-observing');
 
-      function templateCard({ imgURL, name, id }) {
+      function templateCard({ imgURL, name, planet, gender, id }) {
         const layout = `
-          <div id="character-card" class="bg-gradient-to-r from-indigo-500/10 to-blue-500/10 rounded-full p-5 max-w-md w-full">
+          <div id="character-card" class="bg-gradient-to-r from-indigo-500/10 to-blue-500/10 rounded-full p-5 max-w-md w-full max-sm:max-w-none">
             <div class="flex items-center gap-5 w-full">
               <div class="max-w-[150px] max-h-[150px] h-full w-full">
                 <img src="${imgURL}" alt="${name}" class="min-w-[150px] min-h-[150px] rounded-full">
               </div>
-              <div>
-                <h2 class="text-3xl font-semibold text-sans">
+              <div class="flex flex-col gap-2">
+                <h2 class="text-3xl font-semibold text-sans max-sm:text-md">
                   ${name}
                 </h2>
+                <small class="text-base text-gray-300">
+                  ${gender !== 'unknown' ? gender : ''}
+                  ${gender !== 'unknown' && planet !== 'unknown' ? ' · ' : ''}
+                  ${planet !== 'unknown' ? planet : ''}
+                </small>
               </div>
             </div>
           </div>`;
@@ -72,7 +77,13 @@
 
       function appendCharacterElements({ data, containerElement }) {
         data.forEach((character) => {
-          const contentCharacterCard = templateCard({ name: character.name, imgURL: character.image, id: character.id })
+          const contentCharacterCard = templateCard({
+            name: character.name,
+            imgURL: character.image,
+            id: character.id,
+            gender: character.gender,
+            planet: character.origin.name
+          })
           containerElement.appendChild(contentCharacterCard);
         });
       }
