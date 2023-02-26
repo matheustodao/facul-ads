@@ -31,26 +31,12 @@
   </div>
 
   <script>
-    function useState(initialValue) {
-      const stateValue = initialValue;
-
-      function dispatcher(newValues) {
-        const updatedValue = newValues;
-
-        if (typeof newValues === 'function') {
-          updatedValue = newValues(stateValue);
-        }
-
-        Object.assign(stateValue, updatedValue)
-      }
-
-      return [stateValue, dispatcher]
-    }
-  </script>
-
-  <script>
     async function processingRickAndMortyCharacter() {
-      const [infoEndpoint, setInfoEndpoint] = useState({})
+      const infoEndpoint = {};
+
+      function setInfoEndpoint(newValue) {
+        Object.assign(infoEndpoint, newValue)
+      }
       const listCharactersElement = document.querySelector('#list-container-character-observing');
 
       function templateCard({ imgURL, name, planet, gender, id }) {
