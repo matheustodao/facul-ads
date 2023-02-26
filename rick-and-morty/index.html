@@ -5,13 +5,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rick e Morty's Character</title>
+  <title>Rick e Morty Character</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="bg-gray-800 text-white py-14 min-h-screen flex flex-col items-center justify-center max-sm:mx-4">
-  <h1 class="text-3xl font-bold mb-10">Personagens de Rick e Morty</h1>
+  <h1 class="text-3xl font-bold mb-10 text-center">Rick and Morty Characters</h1>
   <div id="list-container-character" class="flex flex-col items-center gap-[12px]">
     <ul id="list-container-character-observing" class="flex flex-col items-center gap-[24px]"></ul>
 
@@ -49,12 +49,12 @@
 
       function templateCard({ imgURL, name, planet, gender, id }) {
         const layout = `
-          <div id="character-card" class="bg-gradient-to-r from-indigo-500/10 to-blue-500/10 rounded-full p-5 max-w-md w-full max-sm:max-w-none">
-            <div class="flex items-center gap-5 w-full">
+          <div id="character-card" class="bg-gradient-to-r from-indigo-500/10 to-blue-500/10 rounded-full max-[392px]:rounded-[30%] p-5 max-w-md w-full max-sm:max-w-none">
+            <div class="flex items-center gap-5 w-full max-[392px]:flex-col max-[392px]:justify-center">
               <div class="max-w-[150px] max-h-[150px] h-full w-full">
                 <img src="${imgURL}" alt="${name}" class="min-w-[150px] min-h-[150px] rounded-full">
               </div>
-              <div class="flex flex-col gap-2">
+              <div class="flex flex-col gap-2 max-[392px]:items-center max-[392px]:justify-center max-[392px]:text-center">
                 <h2 class="text-3xl font-semibold text-sans max-sm:text-md">
                   ${name}
                 </h2>
