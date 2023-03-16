@@ -67,19 +67,52 @@ int main() {
         printf("O numero e nao multiplo de 3");
     }; */
 
-        // ===== Ex. 6
+    /*    // ===== Ex. 6
     int numberOne;
 
     printf("Digite um numero: ");
     scanf("%d", &numberOne);
 
     if (((numberOne % 3) == 0) && ((numberOne % 7) == 0)) {
-        printf("O numero e multiplo de 3");
+        printf("O numero e multiplo de 3 e 7");
     } else {
-        printf("O numero e nao multiplo de 3");
-    };
+        printf("O numero e nao multiplo de 3 e 7");
+    };*/
 
+    /* // ======= Ex. 7
 
+    int randomNumber;
+    printf("Digite um numero: ");
+    scanf("%d", &randomNumber);
+
+    _Bool isDivisibleByTwo = (randomNumber % 2) == 0;
+    _Bool isDivisibleByFive = (randomNumber % 5) == 0;
+    _Bool isDivisibleByTen = (randomNumber % 10) == 0;
+
+    if (isDivisibleByTwo && isDivisibleByFive && isDivisibleByTen) {
+        printf("Numero e divisivel por 10, 5 e 2");
+    } else {
+        printf("O numero %d nao e divisivel por 10, 5 ou 2", randomNumber);
+    }; */
+
+    /* // ==== Ex. 8
+    int total;
+    int firstValue;
+    int secondValue;
+
+    printf("Digite um numero: ");
+    scanf("%d", &firstValue);
+
+    printf("Digite outro numero: ");
+    scanf("%d", &secondValue);
+
+    total = firstValue + secondValue;
+
+    if (total > 20) {
+        printf("%d + %d + 8 = %d", firstValue, secondValue, (total + 8));
+    } else if (total <= 20) {
+        printf("%d + %d - 8 = %d", firstValue, secondValue, (total - 5));
+    }; */
 
     return 0;
 }
